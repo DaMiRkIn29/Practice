@@ -3,9 +3,9 @@ def custom_write(file_name, strings):
         strings_positions = {}
 
         for i, string in enumerate(strings):
-            start_byte = file.tell()  # Получаем текущее положение в байтах
-            file.write(string + '\n')  # Записываем строку в файл
-            strings_positions[(i + 1, start_byte)] = string  # Сохраняем в словарь
+            start_byte = file.tell()
+            file.write(string + '\n')
+            strings_positions[(i + 1, start_byte)] = string
 
     return strings_positions
 

@@ -6,12 +6,13 @@ def read_info(name):
     with open(name, 'r') as file:
         while True:
             line = file.readline()
-            if not line:  # Если прочитанная строка пустая, выходим из цикла
+            if not line:
                 break
-            all_data.append(line.strip())  # Добавляем строку в список, убирая лишние пробелы
+            all_data.append(line.strip())
+
 
 if __name__ == '__main__':
-    filenames = [f'./file {number}.txt' for number in range(1, 5)]  # Замените на реальные названия файлов
+    filenames = [f'./file {number}.txt' for number in range(1, 5)]
 
     # Линейный вызов
     start_time = time.time()
@@ -22,7 +23,7 @@ if __name__ == '__main__':
 
     # Многопроцессный вызов
     start_time = time.time()
-    with Pool(processes=4) as pool:  # Укажите количество процессов, которое хотите использовать
+    with Pool(processes=4) as pool:
         pool.map(read_info, filenames)
     multiprocessing_duration = time.time() - start_time
     print(f"Многопроцессный вызов: {multiprocessing_duration:.6f} секунд")
